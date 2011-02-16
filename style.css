@@ -1,0 +1,78 @@
+/* what the food css */
+/* made with the attitude of Sass. */
+body {
+  font-family: Georgia, Times, Helvetica, serif;
+  font-size: 1.1em;
+  background-color: #fff5f5; }
+
+a {
+  color: #999999;
+  text-decoration: none; }
+
+p {
+  font-family: "Ubuntu", arial, serif;
+  font-size: 0.8em; }
+
+/* positioning */
+#main {
+  width: 700px;
+  margin: 20px auto 20px auto;
+  border: 0px solid #222222; }
+
+#title {
+  color: #555;
+  text-shadow: 0px 1px 1px #222222;
+  font-family: Georgia, Times, Helvetica, serif;
+  font-weight: bold;
+  font-size: 3em;
+  margin: 0px 0px 30px 0px; }
+
+.meal_left {
+  float: left; }
+
+.meal_right {
+  float: right; }
+
+/* inputs */
+input[name=meal_name] {
+  width: 350px;
+  float: right;
+  font-family: "Ubuntu", arial, serif;
+  padding: 4px;
+  margin: 2px 4px;
+  font-size: 2em;
+  border: 1px solid #999;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset; }
+
+input[name=meal_day] {
+  width: 200px;
+  font-family: "Ubuntu", arial, serif;
+  padding: 4px;
+  margin: 2px 4px;
+  font-size: 2em;
+  border: 1px solid #999;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset; }
+
+input[name=meal_ingredient] {
+  float: right;
+  width: 300px;
+  font-family: "Ubuntu", arial, serif;
+  padding: 4px;
+  margin: 2px 4px;
+  font-size: 1.1em;
+  border: 1px solid #999;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset; }
+
+#finish_line {
+  clear: both;
+  margin: 200px 0px 0px 0px;
+  border-top: 1px dotted #ccc; }
