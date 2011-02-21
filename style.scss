@@ -9,15 +9,18 @@ $link: #999;
 $def_font: Georgia, Times, Helvetica ,serif;
 $sans_font: 'Ubuntu', arial, serif;
 
+$def_font_size: 2em;
+$small_font_size: 1.1em;
+
 body {
     font-family: $def_font;
-    font-size: 1.1em;
+    font-size: $small_font_size;
     background-color: $white_bg;
 }
 
 a {
   color: $link;
-  text-decoration: none;    
+  text-decoration: none;
 }
 
 p {
@@ -25,9 +28,29 @@ p {
     font-size: 0.8em;
 }
 
+@mixin meal_fix_style($font_size) {
+    font-family: $sans_font;
+    font-size: $font_size;
+    color: $default_font;
+}
+span.meal_name {
+    @include meal_fix_style($def_font_size);
+}
+span.meal_ingredient {
+    @include meal_fix_style($small_font_size);
+} 
+span.meal_day {    
+    @include meal_fix_style($def_font_size);
+} 
+
+/* clearer */
+.clear {
+    clear:both;
+}
+
 /* positioning */
 #main {
-    width: 700px;
+    width: 600px;
     margin: 20px auto 20px auto;
     border: 0px solid $antrazit;
 }
@@ -39,8 +62,16 @@ p {
     font-weight: bold;
     font-size: 3em;
     margin: 0px 0px 30px 0px;
+    text-align: center;
 }
 
+#meal_new {
+    height: 100px;
+    margin: 0px 0px 20px 0px;
+}
+.meal_fix {
+    height: 100px;
+}
 .meal_left {
     float: left;
 }
@@ -59,11 +90,11 @@ p {
     -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
     -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
     -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;  
+    box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
 }
 
 input[name=meal_name] {
-    width: 350px;
+    width: 330px;
     float: right;
     @include input_style(2em);
 }
@@ -74,11 +105,70 @@ input[name=meal_day] {
 input[name=meal_ingredient] {
     float: right;
     width: 300px;
-    @include input_style(1.1em);
+    @include input_style($small_font_size);
 }
 
+/* footer */
 #finish_line {
     clear: both;
-    margin: 200px 0px 0px 0px;
-      border-top: 1px dotted #ccc;
+    margin: 40px 0px 0px 0px;
+    border-top: 1px dotted #ccc;
+}
+
+
+
+/* drop shadows*/
+.drop-shadow {
+    position: relative;
+    padding: 0.5em;
+    margin: 2em 10px 4em;
+    background: #fff;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.drop-shadow:before, .drop-shadow:after {
+    content:"";
+    position:absolute;
+    z-index:-2;
+}
+
+.drop-shadow p {
+    font-size:16px;
+    font-weight:bold;
+}
+
+.curved:before {
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:50%;
+    -webkit-box-shadow:0 0 15px rgba(0,0,0,0.6);
+    -moz-box-shadow:0 0 15px rgba(0,0,0,0.6);
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+    -moz-border-radius:10px / 100px;
+    border-radius:10px / 100px;
+}
+
+.curved-vt-2:before {
+    right:0;
+}
+
+.curved-hz-1:before {
+    top:50%;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
+}
+
+.curved-hz-2:before {
+    top:0;
+    bottom:0;
+    left:10px;
+    right:10px;
+    -moz-border-radius:100px / 10px;
+    border-radius:100px / 10px;
 }

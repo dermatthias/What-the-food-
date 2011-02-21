@@ -13,9 +13,28 @@ p {
   font-family: "Ubuntu", arial, serif;
   font-size: 0.8em; }
 
+span.meal_name {
+  font-family: "Ubuntu", arial, serif;
+  font-size: 2em;
+  color: #555555; }
+
+span.meal_ingredient {
+  font-family: "Ubuntu", arial, serif;
+  font-size: 1.1em;
+  color: #555555; }
+
+span.meal_day {
+  font-family: "Ubuntu", arial, serif;
+  font-size: 2em;
+  color: #555555; }
+
+/* clearer */
+.clear {
+  clear: both; }
+
 /* positioning */
 #main {
-  width: 700px;
+  width: 600px;
   margin: 20px auto 20px auto;
   border: 0px solid #222222; }
 
@@ -25,7 +44,15 @@ p {
   font-family: Georgia, Times, Helvetica, serif;
   font-weight: bold;
   font-size: 3em;
-  margin: 0px 0px 30px 0px; }
+  margin: 0px 0px 30px 0px;
+  text-align: center; }
+
+#meal_new {
+  height: 100px;
+  margin: 0px 0px 20px 0px; }
+
+.meal_fix {
+  height: 100px; }
 
 .meal_left {
   float: left; }
@@ -35,7 +62,7 @@ p {
 
 /* inputs */
 input[name=meal_name] {
-  width: 350px;
+  width: 330px;
   float: right;
   font-family: "Ubuntu", arial, serif;
   padding: 4px;
@@ -72,7 +99,57 @@ input[name=meal_ingredient] {
   -o-box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset;
   box-shadow: rgba(0, 0, 0, 0.2) 0 1px 2px 0 inset; }
 
+/* footer */
 #finish_line {
   clear: both;
-  margin: 200px 0px 0px 0px;
+  margin: 40px 0px 0px 0px;
   border-top: 1px dotted #ccc; }
+
+/* drop shadows*/
+.drop-shadow {
+  position: relative;
+  padding: 0.5em;
+  margin: 2em 10px 4em;
+  background: #fff;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset; }
+
+.drop-shadow:before, .drop-shadow:after {
+  content: "";
+  position: absolute;
+  z-index: -2; }
+
+.drop-shadow p {
+  font-size: 16px;
+  font-weight: bold; }
+
+.curved:before {
+  top: 10px;
+  bottom: 10px;
+  left: 0;
+  right: 50%;
+  -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  -moz-border-radius: 10px/100px;
+  border-radius: 10px/100px; }
+
+.curved-vt-2:before {
+  right: 0; }
+
+.curved-hz-1:before {
+  top: 50%;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  -moz-border-radius: 100px/10px;
+  border-radius: 100px/10px; }
+
+.curved-hz-2:before {
+  top: 0;
+  bottom: 0;
+  left: 10px;
+  right: 10px;
+  -moz-border-radius: 100px/10px;
+  border-radius: 100px/10px; }
