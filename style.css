@@ -13,18 +13,22 @@ p {
   font-family: "Ubuntu", arial, serif;
   font-size: 0.8em; }
 
+/* fix meals */
 span.meal_name {
   font-family: "Ubuntu", arial, serif;
+  text-align: right;
   font-size: 2em;
   color: #555555; }
 
 span.meal_ingredient {
   font-family: "Ubuntu", arial, serif;
+  text-align: right;
   font-size: 1.1em;
   color: #555555; }
 
 span.meal_day {
   font-family: "Ubuntu", arial, serif;
+  text-align: right;
   font-size: 2em;
   color: #555555; }
 
@@ -35,7 +39,7 @@ span.meal_day {
 /* positioning */
 #main {
   width: 600px;
-  margin: 20px auto 20px auto;
+  margin: 30px auto 30px auto;
   border: 0px solid #222222; }
 
 #title {
@@ -52,15 +56,22 @@ span.meal_day {
   margin: 0px 0px 20px 0px; }
 
 .meal_fix {
-  height: 100px; }
-
-.meal_left {
-  float: left; }
-
-.meal_right {
-  float: right; }
+  height: 90px; }
+  .meal_fix .meal_left {
+    float: left;
+    width: 290px;
+    margin: 0px 0px 0px 36px; }
+  .meal_fix .meal_right {
+    float: right;
+    width: 212px; }
 
 /* inputs */
+.meal_left_input {
+  float: left; }
+
+.meal_right_input {
+  float: right; }
+
 input[name=meal_name] {
   width: 330px;
   float: right;
@@ -105,7 +116,7 @@ input[name=meal_ingredient] {
   margin: 40px 0px 0px 0px;
   border-top: 1px dotted #ccc; }
 
-/* drop shadows*/
+/* logo drop shadows */
 .drop-shadow {
   position: relative;
   padding: 0.5em;

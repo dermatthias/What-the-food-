@@ -1,6 +1,7 @@
 /* what the food css */
 /* made with the attitude of Sass. */
 
+// sass vars
 $white_bg: #fff5f5;
 $default_font: #555;
 $antrazit: #222;
@@ -12,6 +13,11 @@ $sans_font: 'Ubuntu', arial, serif;
 $def_font_size: 2em;
 $small_font_size: 1.1em;
 
+$name_width: 330px;
+$ingredient_width: 300px;
+$day_width: 200px;
+
+// css
 body {
     font-family: $def_font;
     font-size: $small_font_size;
@@ -28,8 +34,11 @@ p {
     font-size: 0.8em;
 }
 
+
+/* fix meals */
 @mixin meal_fix_style($font_size) {
     font-family: $sans_font;
+    text-align: right;
     font-size: $font_size;
     color: $default_font;
 }
@@ -51,7 +60,7 @@ span.meal_day {
 /* positioning */
 #main {
     width: 600px;
-    margin: 20px auto 20px auto;
+    margin: 30px auto 30px auto;
     border: 0px solid $antrazit;
 }
 
@@ -65,21 +74,38 @@ span.meal_day {
     text-align: center;
 }
 
+// container for the inputs
 #meal_new {
     height: 100px;
     margin: 0px 0px 20px 0px;
 }
+
+// container for fix items
 .meal_fix {
-    height: 100px;
+    height: 90px;
+
+    .meal_left {
+	$ml_margin: 40px;
+	float: left;
+	width: $name_width - $ml_margin;
+	margin: 0px 0px 0px $ml_margin - 4;
+    }
+
+    .meal_right {
+	float: right;
+	width: $day_width + 12;
+    }
 }
-.meal_left {
+
+
+/* inputs */
+.meal_left_input {
     float: left;
 }
-.meal_right {
+.meal_right_input {
     float: right;
 }
 
-/* inputs */
 @mixin input_style($font_size) {
     font-family: $sans_font;
     padding: 4px;
@@ -94,17 +120,17 @@ span.meal_day {
 }
 
 input[name=meal_name] {
-    width: 330px;
+    width: $name_width;
     float: right;
     @include input_style(2em);
 }
 input[name=meal_day] {
-    width: 200px;
+    width: $day_width;
     @include input_style(2em);
 }
 input[name=meal_ingredient] {
     float: right;
-    width: 300px;
+    width: $ingredient_width;
     @include input_style($small_font_size);
 }
 
@@ -116,8 +142,7 @@ input[name=meal_ingredient] {
 }
 
 
-
-/* drop shadows*/
+/* logo drop shadows */
 .drop-shadow {
     position: relative;
     padding: 0.5em;

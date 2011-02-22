@@ -6,9 +6,6 @@ $(document).ready(
 	// the meal model
 	window.Meal = Backbone.Model.extend(
 	    {
-		// attributes: order,
-
-		// constructor
 		initialize: function() {
 		    this.set(
 			{
@@ -18,7 +15,11 @@ $(document).ready(
 
 		// gets called every time when set() is called
 		validate: function(attrs) {
+		    
+		},
 
+		delete: function () {
+		  this.destroy();
 		}
 	    });
 
@@ -55,10 +56,11 @@ $(document).ready(
 		initialize: function(args) {
 		    _.bindAll(this, 'render');
 		    this.model.bind('change', this.render);
+		    //this.model.bind('remove', this.delete);
 		},
 
 		events: {
-
+		    "click span.meal_name": "delete"
 		},
 
 		render: function() {
@@ -67,6 +69,12 @@ $(document).ready(
 
 		    // important for chaining!
 		    return this;
+		},
+
+		// removes the model and removes this view associated with it
+		delete: function () {		    
+		    this.model.delete();
+		    this.remove();
 		}
 
 	    });
