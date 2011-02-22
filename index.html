@@ -7,6 +7,8 @@
     media="screen" />
     <link href="http://fonts.googleapis.com/css?family=Ubuntu"
     rel="stylesheet" type="text/css">
+    <meta name="viewport" 
+          content="320, initial-scale=1, maximum-scale=1" /> 
 
     <script type="text/javascript" src="jquery-1.5.min.js"></script>
     <script type="text/javascript" src="underscore-min.js"></script>
@@ -15,6 +17,8 @@
     <script type="text/javascript" src="mustache.js"></script>
     <script type="text/javascript" src="json2.js"></script>
     <script type="text/javascript" src="wtf.js"></script>
+
+
   </head>
   <body>    
     <div id="main">
@@ -34,7 +38,9 @@
         <div class="meal_right_input">
           on
           <input type="textfield" name="meal_day" value=""
-                 placeholder="Day" />          
+                 placeholder="Day" />
+          <br>
+          <button class="minimal drop-shadow curved curved-hz-2" id="input_enter">Enter</button>
         </div>
       </div>
 
@@ -45,11 +51,14 @@
       </div>
       
       <div id="finish_line">
-        <p>A web app
+        <p>A HTML5 demo web app
         by <a href="http://matthias-schneider.org">Matthias
         Schneider</a>. Made with love and the
         awesome <a href="http://documentcloud.github.com/backbone/">backbone.js</a>,
-        <a href="https://github.com/janl/mustache.js/">mustache.js</a>, <a href="http://nodejs.org/">node.js</a> and <a href="http://sass-lang.com/">Sass</a>.</p>
+        <a href="https://github.com/janl/mustache.js/">mustache.js</a>, <a href="http://nodejs.org/">node.js</a>,
+        <a href="http://redis.io">redis</a>
+        and <a href="http://sass-lang.com/">Sass</a>. Main purpose:
+        learning modern web development. And food.</p>
       </div>
     </div>
 
@@ -62,6 +71,8 @@
         </div>
         <div class="meal_right">          
           <span class="meal_day">{{meal_day}}</span>
+          <br>
+          <span class="meal_delete"><a href="">[delete]</a></span>
         </div>
       </div>
     </script>

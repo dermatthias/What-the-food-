@@ -1,4 +1,5 @@
 // what the food? javascript madness
+// hallo jonas!
 
 $(document).ready(
     function() {
@@ -60,7 +61,7 @@ $(document).ready(
 		},
 
 		events: {
-		    "click span.meal_name": "delete"
+		    "click span.meal_delete": "delete"
 		},
 
 		render: function() {
@@ -100,14 +101,16 @@ $(document).ready(
 		    // re-render app on all changes
 		    //Meals.bind('all', this.render);
 
+		    // load all previous data with backbone.sync
 		    Meals.fetch();
 
 		},
 
 		events: {
-		    "keypress input[name=meal_name]": "create_meal",
-		    "keypress input[name=meal_day]": "create_meal"
-		    //"keypress input[name=meal_ingredient]": "add_ingredient_input"
+		    "keypress input[name=meal_name]": "keypress_create_meal",
+		    "keypress input[name=meal_day]": "keypress_create_meal",
+		    "keypress button#input_enter": "keypress_create_meal",
+		    "click button#input_enter": "click_create_meal"
 		},
 
 		render: function () {
@@ -124,9 +127,16 @@ $(document).ready(
 		    };
 		},
 
-		create_meal: function (e) {
-		    if (e.keyCode != 13) return;
+		click_create_meal: function (e) {
+		    this.create_meal();
+		},
 
+		keypress_create_meal: function (e) {
+		    if (e.keyCode != 13) return;
+		    this.create_meal();
+		},
+		
+		create_meal: function () {
 		    // create new Meal model, get values from inputs
 		    Meals.create(this.meal_values());
 
@@ -160,5 +170,4 @@ $(document).ready(
 
 	// create app
 	window.App = new AppView;
-	$("input[name=meal_name]").focus();
     });

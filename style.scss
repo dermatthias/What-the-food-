@@ -19,7 +19,7 @@ $day_width: 200px;
 
 // css
 body {
-    font-family: $def_font;
+    font-family: $sans_font;
     font-size: $small_font_size;
     background-color: $white_bg;
 }
@@ -47,10 +47,14 @@ span.meal_name {
 }
 span.meal_ingredient {
     @include meal_fix_style($small_font_size);
-} 
+}
 span.meal_day {    
     @include meal_fix_style($def_font_size);
-} 
+}
+span.meal_delete {
+    @include meal_fix_style(0.8em);
+    float: right;
+}
 
 /* clearer */
 .clear {
@@ -133,6 +137,10 @@ input[name=meal_ingredient] {
     width: $ingredient_width;
     @include input_style($small_font_size);
 }
+#input_enter {
+    float: right;
+    margin: 2px 8px;
+}
 
 /* footer */
 #finish_line {
@@ -196,4 +204,42 @@ input[name=meal_ingredient] {
     right:10px;
     -moz-border-radius:100px / 10px;
     border-radius:100px / 10px;
+}
+
+/* button minimal */
+button.minimal {
+  background: #e3e3e3;
+  border: 1px solid #bbb;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  -webkit-box-shadow: inset 0 0 1px 1px #f6f6f6;
+  box-shadow: inset 0 0 1px 1px #f6f6f6;
+  color: #555;
+  font-family: $sans_font;
+  font-size: $small_font_size;
+  font-weight: bold;
+  line-height: 1;
+  padding: 8px 0 9px;
+  text-align: center;
+  text-shadow: 0 1px 0 #fff;
+  width: 150px;
+}
+
+button.minimal:hover {
+  background: #d9d9d9;
+  -moz-box-shadow: inset 0 0 1px 1px #eaeaea;
+  -webkit-box-shadow: inset 0 0 1px 1px #eaeaea;
+  box-shadow: inset 0 0 1px 1px #eaeaea;
+  color: #222;
+  cursor: pointer;
+}
+
+button.minimal:active {
+  background: #d0d0d0;
+  -moz-box-shadow: inset 0 0 1px 1px #e3e3e3;
+  -webkit-box-shadow: inset 0 0 1px 1px #e3e3e3;
+  box-shadow: inset 0 0 1px 1px #e3e3e3;
+  color: #000;
 }
