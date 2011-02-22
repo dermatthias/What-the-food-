@@ -7,16 +7,19 @@ $(document).ready(
 	// the meal model
 	window.Meal = Backbone.Model.extend(
 	    {
-		initialize: function() {
+		initialize: function () {
 		    this.set(
 			{
 			    meal_id: 'm_' + this.cid
 			});
 		},
 
-		// gets called every time when set() is called
-		validate: function(attrs) {
-		    
+		// gets called every time before set() and save() 
+		validate: function (attrs) {
+		    // if (!attrs.meal_name) {
+		    // 	return "validation error";
+		    // }
+		    return "errooooorrrr";
 		},
 
 		delete: function () {
@@ -57,7 +60,7 @@ $(document).ready(
 		initialize: function(args) {
 		    _.bindAll(this, 'render');
 		    this.model.bind('change', this.render);
-		    //this.model.bind('remove', this.delete);
+		    this.model.bind('remove', function () {this.remove();});
 		},
 
 		events: {
@@ -75,7 +78,6 @@ $(document).ready(
 		// removes the model and removes this view associated with it
 		delete: function () {		    
 		    this.model.delete();
-		    this.remove();
 		}
 
 	    });
@@ -138,8 +140,9 @@ $(document).ready(
 		
 		create_meal: function () {
 		    // create new Meal model, get values from inputs
-		    Meals.create(this.meal_values());
-
+		    var foo = Meals.create(this.meal_values());
+		    console.log(foo);
+		    
 		    // clear input fields
 		    this.input_name.val('');
 		    this.input_ingredient.val('');
