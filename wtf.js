@@ -1,5 +1,4 @@
 // what the food? javascript madness
-
 $(document).ready(
     function() {
 
