@@ -9,6 +9,9 @@ a {
   color: #999999;
   text-decoration: none; }
 
+a:hover {
+  text-decoration: underline; }
+
 p {
   font-family: "Ubuntu", arial, serif;
   font-size: 0.8em; }

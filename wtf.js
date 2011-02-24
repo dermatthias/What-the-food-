@@ -1,5 +1,4 @@
 // what the food? javascript madness
-// hallo jonas!
 
 $(document).ready(
     function() {
@@ -7,6 +6,9 @@ $(document).ready(
 	// the meal model
 	window.Meal = Backbone.Model.extend(
 	    {
+
+		localStorage: new Store("whatthefood"),
+				
 		initialize: function () {
 		    this.set(
 			{
@@ -16,10 +18,8 @@ $(document).ready(
 
 		// gets called every time before set() and save() 
 		validate: function (attrs) {
-		    // if (!attrs.meal_name) {
-		    // 	return "validation error";
-		    // }
-		    return "errooooorrrr";
+		    // not really working, backbone bug?
+		    // get's called too often...
 		},
 
 		delete: function () {
@@ -32,6 +32,7 @@ $(document).ready(
 	window.MealCollection = Backbone.Collection.extend(
 	    {
 		model: Meal,
+
 		localStorage: new Store("whatthefood"),
 
 		initialize: function() {
@@ -59,6 +60,7 @@ $(document).ready(
 
 		initialize: function(args) {
 		    _.bindAll(this, 'render');
+		    this.model.bind('add', this.render);
 		    this.model.bind('change', this.render);
 		    this.model.bind('remove', function () {this.remove();});
 		},
@@ -96,9 +98,10 @@ $(document).ready(
 		    this.input_day = this.$("input[name=meal_day]");
 
 		    // binding managing functions for adding, deleting...
-		    _.bindAll(this, 'add_meal', 'reload_data', 'render');
+		    _.bindAll(this, 'add_meal', 'reload_data', 'render', 'error_handler');
 		    Meals.bind('add', this.add_meal);
 		    Meals.bind('refresh', this.reload_data);
+		    Meals.bind('error', this.error_handler);
 
 		    // re-render app on all changes
 		    //Meals.bind('all', this.render);
@@ -122,11 +125,17 @@ $(document).ready(
 
 
 		meal_values: function () {
-		    return {
+		    
+		    var val = {
 			meal_name: this.input_name.val(),
 			meal_ingredient: this.input_ingredient.val(),
 			meal_day: this.input_day.val()
 		    };
+		    
+		    // custom validation
+		    if (val.meal_name != "" && val.meal_day != "")			
+			return val;	    
+		    return false;
 		},
 
 		click_create_meal: function (e) {
@@ -140,13 +149,29 @@ $(document).ready(
 		
 		create_meal: function () {
 		    // create new Meal model, get values from inputs
-		    var foo = Meals.create(this.meal_values());
-		    console.log(foo);
+		    var values = this.meal_values();
+		    if (!values) {
+			Meals.trigger("error");
+			return false;
+		    }
+		    Meals.create(values);
 		    
+		    // alternative model add method:
+		    // var new_meal = new Meal();
+		    // new_meal.save(this.meal_values(), 
+		    // 		  {success: this.save_success_handler});
+
 		    // clear input fields
 		    this.input_name.val('');
 		    this.input_ingredient.val('');
 		    this.input_day.val('');
+		    
+		    return true;
+		},
+		
+		save_success_handler: function (model, response) {
+		    // add to collection
+		    Meals.add(response);
 		},
 
 		add_meal: function(meal) {
@@ -160,6 +185,11 @@ $(document).ready(
 
 		reload_data: function() {
 		    Meals.each(this.add_meal);
+		},
+
+		error_handler: function () {
+		    // TODO:
+		    // view for error messages
 		}
 
 	    });
